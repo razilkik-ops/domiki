@@ -156,6 +156,7 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
 .dialog-close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border: 0; background: transparent; cursor: pointer; font-size: 22px; }
 .booking-dialog form { display: grid; gap: 15px; }
 .booking-dialog label { display: grid; gap: 6px; font-size: 12px; font-weight: 600; }
+.booking-dialog label small, .house-inquiry-form > label small { color: var(--muted); font-size: 9px; font-weight: 400; }
 .booking-dialog input, .booking-dialog select { height: 48px; width: 100%; padding: 0 13px; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: var(--ink); }
 .booking-deposit-note { margin: 0; padding: 11px 12px; display: flex; align-items: flex-start; gap: 8px; border: 1px solid rgba(189, 111, 55, .22); border-radius: 11px; background: #fbf3eb; color: var(--accent-dark); font-size: 11px; font-weight: 600; line-height: 1.45; }
 .booking-deposit-note i { flex: 0 0 auto; margin-top: 1px; font-size: 17px; }

@@ -238,6 +238,7 @@
       <form id="booking-form">
         <label>Ваше имя<input name="name" type="text" placeholder="Анна" required /></label>
         <label>Телефон<input name="phone" type="tel" placeholder="+375 29 000-00-00" required /></label>
+        <label><span>Соцсеть для связи <small>(необязательно)</small></span><input name="social" type="text" placeholder="@username или ссылка" /></label>
         <label>Что бронируем<select name="house" id="booking-house"><option>Мальта</option><option>Валенсия</option><option>Апартаменты на 2 этаже коттеджа</option><option>Баня на дровах</option></select></label>
         <fieldset class="booking-extras" data-booking-extras>
           <legend>Добавить к бронированию</legend>
@@ -247,7 +248,7 @@
         <p class="booking-deposit-note"><i class="ph ph-info" aria-hidden="true"></i><span>Бронирование возможно только после внесения задатка.</span></p>
         <button class="button button-primary" type="submit">Отправить заявку</button>
       </form>
-      <p class="dialog-success" hidden><i class="ph ph-check-circle"></i> Заявка отправлена. Скоро мы вам позвоним.</p>
+      <p class="dialog-success" hidden><i class="ph ph-check-circle"></i> Заявка отправлена. Скоро мы с вами свяжемся.</p>
     </dialog>
 
     <div class="toast" role="status" aria-live="polite"></div>

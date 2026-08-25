@@ -60,6 +60,6 @@ document.getElementById('booking-form').addEventListener('submit', (event) => {
   const extras = new FormData(event.currentTarget).getAll('extras');
   event.currentTarget.hidden = true;
   const success = dialog.querySelector('.dialog-success');
-  success.innerHTML = `<i class="ph ph-check-circle"></i> Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы вам позвоним.`;
+  success.innerHTML = `<i class="ph ph-check-circle"></i> Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы с вами свяжемся.`;
   success.hidden = false;
 });

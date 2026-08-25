@@ -45,7 +45,7 @@ form?.addEventListener('submit', (event) => {
   const extras = new FormData(form).getAll('extras');
   form.hidden = true;
   const success = dialog.querySelector('.dialog-success');
-  success.innerHTML = `<i class="ph ph-check-circle"></i> Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы вам позвоним.`;
+  success.innerHTML = `<i class="ph ph-check-circle"></i> Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы с вами свяжемся.`;
   success.hidden = false;
 });
 
@@ -70,7 +70,7 @@ if (inquiryForm) {
     event.preventDefault();
     const extras = new FormData(inquiryForm).getAll('extras');
     const success = inquiryCard.querySelector('.house-inquiry-success');
-    success.querySelector('span').textContent = `Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы вам позвоним.`;
+    success.querySelector('span').textContent = `Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы с вами свяжемся.`;
     inquiryForm.hidden = true;
     success.hidden = false;
     success.focus?.();
