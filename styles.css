@@ -191,6 +191,48 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
 .dialog-success i { font-size: 23px; }
 .toast { position: fixed; z-index: 80; left: 50%; bottom: 28px; transform: translate(-50%, 30px); padding: 13px 19px; border-radius: 5px; background: #342f2a; color: #fff; font-size: 13px; opacity: 0; pointer-events: none; transition: .25s ease; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
+.privacy-consent { display: flex !important; align-items: flex-start; gap: 9px !important; color: var(--muted); font-size: 10px !important; font-weight: 400 !important; line-height: 1.45; }
+.privacy-consent input { width: 17px !important; height: 17px !important; flex: 0 0 17px; margin: 1px 0 0; accent-color: var(--accent); }
+.privacy-consent a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 2px; }
+.cookie-banner { position: fixed; z-index: 100; right: 22px; bottom: 22px; width: min(610px, calc(100% - 44px)); padding: 20px; display: flex; align-items: center; gap: 22px; border: 1px solid rgba(137, 111, 88, .2); border-radius: 18px; background: rgba(255, 254, 250, .98); box-shadow: 0 20px 60px rgba(48, 42, 34, .22); backdrop-filter: blur(12px); }
+.cookie-banner-copy { min-width: 0; display: flex; align-items: flex-start; gap: 13px; }
+.cookie-banner-copy > i { flex: 0 0 auto; margin-top: 1px; color: var(--accent); font-size: 27px; }
+.cookie-banner h2 { font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 0; }
+.cookie-banner p { margin: 5px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.cookie-banner p a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 2px; }
+.cookie-banner-actions { flex: 0 0 auto; display: flex; gap: 8px; }
+.cookie-banner-actions .button { min-height: 40px; padding: 0 15px; font-size: 11px; }
+.map-consent-placeholder { width: 100%; height: 100%; min-height: 230px; padding: 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: #ebe5dc; color: var(--ink); text-align: center; }
+.map-consent-placeholder > i { color: var(--accent); font-size: 35px; }
+.map-consent-placeholder strong { font: 600 24px/1.1 var(--serif); }
+.map-consent-placeholder p { max-width: 390px; margin: 0 0 8px; color: var(--muted); font-size: 11px; }
+.map-consent-placeholder .button { min-height: 40px; }
+.location-map iframe:not([src]), .house-location-map iframe:not([src]) { display: none; }
+.house-location-map.maps-blocked .house-location-map-link { display: none; }
+.legal-hero { padding: 82px 0 66px; border-bottom: 1px solid var(--line); background: #f1e8dd; }
+.legal-hero h1 { max-width: 900px; font-size: clamp(48px, 6vw, 78px); line-height: .98; }
+.legal-hero p:not(.eyebrow) { margin: 18px 0 8px; color: var(--muted); font-size: 15px; }
+.legal-hero small { color: var(--muted); font-size: 11px; }
+.legal-content { width: min(900px, calc(100% - 48px)); padding: 68px 0 82px; }
+.legal-content section { padding: 0 0 34px; margin: 0 0 34px; border-bottom: 1px solid var(--line); }
+.legal-content section:last-child { margin-bottom: 0; border-bottom: 0; }
+.legal-content h2 { margin-bottom: 19px; font-size: 35px; }
+.legal-content p, .legal-content li { color: var(--muted); font-size: 13px; line-height: 1.7; }
+.legal-content p { margin: 0 0 13px; }
+.legal-content ul { margin: 0 0 15px; padding-left: 22px; }
+.legal-content li { margin-bottom: 8px; }
+.legal-content a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; }
+.legal-content code { padding: 2px 5px; border-radius: 5px; background: #eee7dd; color: var(--ink); font-size: 11px; }
+.legal-table-wrap { margin: 18px 0 20px; overflow-x: auto; border: 1px solid var(--line); border-radius: 15px; background: var(--white); }
+.legal-content table { width: 100%; min-width: 680px; border-collapse: collapse; }
+.legal-content th, .legal-content td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 11px; line-height: 1.55; }
+.legal-content th { background: var(--paper-soft); color: var(--ink); font-weight: 700; }
+.legal-content td { color: var(--muted); }
+.legal-content tbody tr:last-child td { border-bottom: 0; }
+.legal-callout { padding: 17px 19px; border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; background: #fbf3eb; color: var(--ink) !important; }
+.footer-legal-links { position: absolute; left: 50%; bottom: 7px; display: flex; gap: 18px; transform: translateX(-50%); white-space: nowrap; }
+.footer-legal-links a, .footer-legal-links button { padding: 0; border: 0; background: transparent; color: var(--muted); cursor: pointer; font-size: 9px; text-decoration: underline; text-underline-offset: 2px; }
+.footer-legal-links a:hover, .footer-legal-links button:hover { color: var(--accent-dark); }
 
 /* Individual house pages */
 .house-hero { height: 620px; position: relative; overflow: hidden; }
@@ -415,6 +457,13 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
   .house-location-map { height: 300px; margin-bottom: 30px; border-radius: 20px; }
   .house-callout { min-height: 0; margin-bottom: 30px; padding: 35px 27px; flex-direction: column; align-items: flex-start; }
   .house-callout-actions { align-items: flex-start; }
+  .cookie-banner { right: 15px; bottom: 15px; width: calc(100% - 30px); padding: 18px; align-items: stretch; flex-direction: column; gap: 15px; }
+  .cookie-banner-actions { width: 100%; }
+  .cookie-banner-actions .button { flex: 1 1 0; }
+  .legal-hero { padding: 58px 0 48px; }
+  .legal-content { width: min(100% - 30px, 900px); padding: 50px 0 64px; }
+  .legal-content h2 { font-size: 31px; }
+  .footer-legal-links { position: static; order: 4; width: 100%; flex-wrap: wrap; justify-content: center; transform: none; white-space: normal; }
 }
 
 @media (max-width: 440px) {
@@ -456,6 +505,9 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
   .house-location-map { height: 260px; }
   .house-location-map-link { left: 12px; right: 12px; bottom: 12px; justify-content: center; }
   .house-callout h2 { font-size: 35px; }
+  .cookie-banner-actions { flex-direction: column-reverse; }
+  .cookie-banner-actions .button { width: 100%; }
+  .legal-hero h1 { font-size: 43px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
