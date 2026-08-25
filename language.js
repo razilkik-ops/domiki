@@ -2,6 +2,11 @@ const SOURCE_ORIGIN = 'https://razilkik-ops.github.io';
 const TRANSLATED_ORIGIN = 'https://razilkik--ops-github-io.translate.goog';
 const TRANSLATED_HOST = new URL(TRANSLATED_ORIGIN).hostname;
 const isTranslated = window.location.hostname === TRANSLATED_HOST;
+const contactUrls = {
+  telegram: 'tg://resolve?phone=375293334899',
+  viber: 'viber://chat?number=%2B375293334899',
+  whatsapp: 'https://wa.me/375293334899',
+};
 
 function getPublicPath() {
   const { hostname, pathname } = window.location;
@@ -34,4 +39,15 @@ document.querySelectorAll('[data-language]').forEach((button) => {
   const isActive = language === (isTranslated ? 'zh' : 'ru');
   button.setAttribute('aria-pressed', String(isActive));
   button.addEventListener('click', () => switchLanguage(language));
+});
+
+document.querySelectorAll('[data-contact-link]').forEach((link) => {
+  const contactUrl = contactUrls[link.dataset.contactLink];
+  if (!contactUrl) return;
+  link.setAttribute('href', contactUrl);
+  link.addEventListener('click', (event) => {
+    if (!isTranslated) return;
+    event.preventDefault();
+    window.location.assign(contactUrl);
+  });
 });
