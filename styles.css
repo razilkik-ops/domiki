@@ -32,7 +32,13 @@ img { display: block; width: 100%; }
 .nav { display: flex; gap: 36px; margin-left: auto; }
 .nav a, .footer-nav a { font-size: 13px; transition: color .2s ease; }
 .nav a:hover, .footer-nav a:hover { color: var(--accent); }
-.header-actions { display: flex; align-items: center; gap: 24px; }
+.header-actions { display: flex; align-items: center; gap: 20px; }
+.language-switcher { min-height: 34px; padding: 3px 8px; display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 254, 250, .82); color: var(--muted); white-space: nowrap; }
+.language-switcher button { min-width: 27px; padding: 3px 4px; border: 0; border-radius: 999px; background: transparent; color: inherit; cursor: pointer; font-size: 10px; font-weight: 600; line-height: 1.2; transition: color .2s ease, background .2s ease; }
+.language-switcher button:hover { color: var(--accent-dark); }
+.language-switcher button[aria-pressed="true"] { background: #f1e7dc; color: var(--accent-dark); }
+.language-switcher button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.language-switcher > span { color: #c8c0b6; font-size: 10px; }
 .phone { font-size: 13px; white-space: nowrap; }
 .menu-toggle { display: none; border: 0; background: transparent; font-size: 26px; color: var(--ink); padding: 8px; }
 
@@ -312,6 +318,7 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
 @media (max-width: 980px) {
   .nav { gap: 20px; }
   .phone { display: none; }
+  .header-actions { gap: 12px; }
   .intro { gap: 45px; }
   .footer-inner { flex-wrap: wrap; padding: 22px 0; }
   .footer-nav { order: 3; width: 100%; margin: 0; justify-content: center; }
@@ -403,6 +410,7 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
   .brand-name { font-size: 16px; }
   .brand-mark { width: 34px; height: 34px; }
   .brand-mark { flex-basis: 34px; }
+  .language-switcher { padding-inline: 6px; }
   h1 { font-size: 41px; }
   .eyebrow { font-size: 10px; }
   .intro-image { height: 245px; }

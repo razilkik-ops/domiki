@@ -27,6 +27,11 @@
           <a href="#contacts">Контакты</a>
         </nav>
         <div class="header-actions">
+          <div class="language-switcher" role="group" aria-label="Выбор языка" translate="no">
+            <button type="button" data-language="ru" aria-pressed="true">RU</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" data-language="zh" aria-pressed="false">中文</button>
+          </div>
           <a class="phone" href="tel:+375293334899">+375 29 333-48-99</a>
           <button class="button button-primary js-book" type="button">Забронировать</button>
         </div>
@@ -252,6 +257,7 @@
     </dialog>
 
     <div class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/language.js"></script>
     <script type="module" src="/script.js"></script>
   </body>
 </html>
