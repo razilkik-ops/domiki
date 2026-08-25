@@ -44,6 +44,9 @@ img { display: block; width: 100%; }
 .header-socials a:hover { border-color: var(--accent); background: var(--accent); color: #fff; transform: translateY(-1px); }
 .phone { font-size: 13px; white-space: nowrap; }
 .menu-toggle { display: none; border: 0; background: transparent; font-size: 26px; color: var(--ink); padding: 8px; }
+.stay-schedule-bar { min-height: 40px; padding: 8px 24px; display: flex; align-items: center; justify-content: center; gap: 8px; border-top: 1px solid rgba(189, 111, 55, .12); border-bottom: 1px solid rgba(189, 111, 55, .18); background: #f3e9de; color: var(--accent-dark); font-size: 12px; line-height: 1.35; text-align: center; }
+.stay-schedule-bar > i { flex: 0 0 auto; font-size: 17px; }
+.stay-schedule-bar strong { font-weight: 700; }
 
 .button { min-height: 48px; padding: 0 27px; border: 1px solid transparent; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; font-size: 13px; font-weight: 600; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
 .button:hover { transform: translateY(-1px); }
@@ -169,6 +172,7 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
 .booking-dialog input, .booking-dialog select { height: 48px; width: 100%; padding: 0 13px; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: var(--ink); }
 .booking-deposit-note { margin: 0; padding: 11px 12px; display: flex; align-items: flex-start; gap: 8px; border: 1px solid rgba(189, 111, 55, .22); border-radius: 11px; background: #fbf3eb; color: var(--accent-dark); font-size: 11px; font-weight: 600; line-height: 1.45; }
 .booking-deposit-note i { flex: 0 0 auto; margin-top: 1px; font-size: 17px; }
+.booking-schedule-note { border-color: rgba(113, 109, 102, .18); background: var(--paper-soft); color: var(--ink); }
 .booking-extras { min-width: 0; margin: 3px 0 1px; padding: 0; border: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .booking-extras[hidden] { display: none; }
 .booking-extras legend { grid-column: 1 / -1; margin-bottom: 8px; padding: 0; color: var(--ink); font-size: 12px; font-weight: 600; }
@@ -339,6 +343,7 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
   body { font-size: 14px; }
   .container, .header-inner, .hero-overlay.container { width: min(100% - 30px, 1168px); }
   .site-header { height: 68px; }
+  .stay-schedule-bar { min-height: 44px; padding: 8px 15px; font-size: 11px; }
   .header-inner { justify-content: space-between; }
   .menu-toggle { display: block; order: 3; }
   .header-actions { margin-left: auto; }
