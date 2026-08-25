@@ -280,6 +280,8 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
 .house-main-info .house-hero-meta { max-width: 620px; margin-bottom: 28px; }
 .house-feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .house-feature-grid > div { min-height: 92px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; background: var(--paper-soft); border: 1px solid rgba(137, 111, 88, .11); border-radius: 18px; }
+.house-feature-grid > .house-feature-highlight { border-color: rgba(189, 111, 55, .38); background: #f3e4d5; box-shadow: 0 10px 28px rgba(128, 74, 35, .08); }
+.house-feature-grid > .house-feature-highlight b { color: var(--accent-dark); font-size: 15px; }
 .house-feature-grid i { flex: 0 0 auto; color: var(--accent); font-size: 31px; }
 .house-feature-grid span { min-width: 0; display: flex; flex-direction: column; }
 .house-feature-grid b { font-size: 12px; font-weight: 600; }
@@ -295,8 +297,9 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
 .house-inquiry-lead { margin: 12px 0 24px; color: var(--muted); font-size: 12px; }
 .house-inquiry-form { display: grid; gap: 14px; }
 .house-inquiry-form > label, .house-inquiry-dates label { display: grid; gap: 6px; font-size: 11px; font-weight: 600; }
-.house-inquiry-form input { width: 100%; height: 48px; padding: 0 13px; border: 1px solid var(--line); border-radius: 11px; background: #fff; color: var(--ink); }
-.house-inquiry-form input:focus { border-color: var(--accent); outline: 2px solid rgba(189, 111, 55, .16); outline-offset: 1px; }
+.house-inquiry-form input, .house-inquiry-form select { width: 100%; height: 48px; padding: 0 13px; border: 1px solid var(--line); border-radius: 11px; background: #fff; color: var(--ink); }
+.house-inquiry-form select { cursor: pointer; }
+.house-inquiry-form input:focus, .house-inquiry-form select:focus { border-color: var(--accent); outline: 2px solid rgba(189, 111, 55, .16); outline-offset: 1px; }
 .house-inquiry-dates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .house-inquiry-extras { min-width: 0; margin: 4px 0 2px; padding: 0; border: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .house-inquiry-extras legend { grid-column: 1 / -1; margin-bottom: 7px; padding: 0; font-size: 11px; font-weight: 600; }

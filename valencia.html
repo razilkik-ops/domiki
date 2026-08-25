@@ -69,11 +69,12 @@
             <label>Ваше имя<input name="name" type="text" autocomplete="name" placeholder="Анна" required /></label>
             <label>Ваш email<input name="email" type="email" autocomplete="email" placeholder="anna@example.com" required /></label>
             <label>Ваш телефон<input name="phone" type="tel" autocomplete="tel" placeholder="+375 29 000-00-00" required /></label>
-            <label><span>Соцсеть для связи <small>(необязательно)</small></span><input name="social" type="text" placeholder="@username или ссылка" /></label>
+            <label>Соцсеть для связи<select name="social" required><option value="" selected disabled>Выберите соцсеть</option><option value="Telegram">Telegram</option><option value="Viber">Viber</option><option value="WhatsApp">WhatsApp</option></select></label>
             <div class="house-inquiry-dates"><label>Дата заезда<input name="arrival" type="date" required /></label><label>Дата отъезда<input name="departure" type="date" required /></label></div>
             <label>Количество гостей<input name="guests" type="number" min="1" max="2" value="2" inputmode="numeric" required /></label>
             <fieldset class="house-inquiry-extras"><legend>Дополнительные услуги</legend><label class="extra-option"><input type="checkbox" name="extras" value="Квадроциклы" /><span class="extra-option-icon"><i class="ph ph-motorcycle"></i></span><span><strong>Квадроциклы</strong><small>Добавить к отдыху</small></span><i class="ph ph-check extra-checkmark"></i></label><label class="extra-option"><input type="checkbox" name="extras" value="Завтраки" /><span class="extra-option-icon"><i class="ph ph-coffee"></i></span><span><strong>Завтраки</strong><small>Добавить к проживанию</small></span><i class="ph ph-check extra-checkmark"></i></label></fieldset>
             <p class="booking-deposit-note booking-schedule-note"><i class="ph ph-clock" aria-hidden="true"></i><span>Заезд после 15:00 · выезд до 12:00.</span></p>
+            <p class="booking-deposit-note booking-schedule-note"><i class="ph ph-moon-stars" aria-hidden="true"></i><span>Режим тишины и покоя: с 23:00 до 07:00.</span></p>
             <p class="booking-deposit-note"><i class="ph ph-info" aria-hidden="true"></i><span>Бронирование возможно только после внесения задатка.</span></p>
             <label class="privacy-consent"><input name="privacy_consent" type="checkbox" required /><span>Я ознакомлен(а) с <a href="./privacy.html" target="_blank" rel="noreferrer">Политикой конфиденциальности</a> и согласен(на) на обработку данных заявки.</span></label>
             <button class="button button-primary" type="submit">Забронировать</button>
