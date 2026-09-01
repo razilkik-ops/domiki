@@ -12,6 +12,13 @@ function showToast(message) {
   showToast.timer = window.setTimeout(() => toast.classList.remove('show'), 3200);
 }
 
+function renderSuccess(element, message) {
+  const icon = document.createElement('i');
+  icon.className = 'ph ph-check-circle';
+  icon.setAttribute('aria-hidden', 'true');
+  element.replaceChildren(icon, document.createTextNode(` ${message}`));
+}
+
 menuButton.addEventListener('click', () => {
   const isOpen = nav.classList.toggle('open');
   menuButton.setAttribute('aria-expanded', String(isOpen));
@@ -28,11 +35,15 @@ nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () =>
 
 function syncBookingExtras() {
   const isBathOnly = bookingHouse.value === 'Баня на дровах';
-  bookingExtras.hidden = isBathOnly;
-  bookingExtras.querySelectorAll('input').forEach((input) => {
-    input.disabled = isBathOnly;
-    if (isBathOnly) input.checked = false;
-  });
+  const bathExtra = bookingExtras.querySelector('[data-bath-extra]');
+  const bathInput = bathExtra?.querySelector('input');
+
+  bookingExtras.hidden = false;
+  bathExtra?.toggleAttribute('hidden', isBathOnly);
+  if (bathInput) {
+    bathInput.disabled = isBathOnly;
+    if (isBathOnly) bathInput.checked = false;
+  }
 }
 
 bookingHouse.addEventListener('change', syncBookingExtras);
@@ -60,6 +71,8 @@ document.getElementById('booking-form').addEventListener('submit', (event) => {
   const extras = new FormData(event.currentTarget).getAll('extras');
   event.currentTarget.hidden = true;
   const success = dialog.querySelector('.dialog-success');
-  success.innerHTML = `<i class="ph ph-check-circle"></i> Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы с вами свяжемся.`;
+  renderSuccess(success, `Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы с вами свяжемся.`);
   success.hidden = false;
 });
+
+document.querySelector('#booking-form [data-js-submit]').disabled = false;

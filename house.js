@@ -6,6 +6,13 @@ const gallery = document.querySelector('[data-house-gallery]');
 const inquiryCard = document.querySelector('.house-inquiry-card');
 const inquiryForm = document.querySelector('.house-inquiry-form');
 
+function renderSuccess(element, message) {
+  const icon = document.createElement('i');
+  icon.className = 'ph ph-check-circle';
+  icon.setAttribute('aria-hidden', 'true');
+  element.replaceChildren(icon, document.createTextNode(` ${message}`));
+}
+
 menuButton?.addEventListener('click', () => {
   const isOpen = nav.classList.toggle('open');
   menuButton.setAttribute('aria-expanded', String(isOpen));
@@ -45,7 +52,7 @@ form?.addEventListener('submit', (event) => {
   const extras = new FormData(form).getAll('extras');
   form.hidden = true;
   const success = dialog.querySelector('.dialog-success');
-  success.innerHTML = `<i class="ph ph-check-circle"></i> Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы с вами свяжемся.`;
+  renderSuccess(success, `Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы с вами свяжемся.`);
   success.hidden = false;
 });
 
@@ -75,6 +82,8 @@ if (inquiryForm) {
     success.hidden = false;
     success.focus?.();
   });
+
+  inquiryForm.querySelector('[data-js-submit]').disabled = false;
 }
 
 if (gallery) {
@@ -84,6 +93,39 @@ if (gallery) {
   const status = gallery.querySelector('[data-gallery-status]');
   let currentIndex = 0;
   let touchStartX = 0;
+
+  const lightbox = document.createElement('dialog');
+  lightbox.className = 'gallery-lightbox';
+  lightbox.setAttribute('aria-label', 'Просмотр фотографии без обрезки');
+  lightbox.innerHTML = `
+    <div class="gallery-lightbox-frame">
+      <button class="gallery-lightbox-close" type="button" aria-label="Закрыть просмотр"><i class="ph ph-x" aria-hidden="true"></i></button>
+      <button class="gallery-lightbox-arrow gallery-lightbox-prev" type="button" aria-label="Предыдущая фотография"><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+      <img alt="" />
+      <button class="gallery-lightbox-arrow gallery-lightbox-next" type="button" aria-label="Следующая фотография"><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+      <p class="gallery-lightbox-counter" aria-live="polite"></p>
+    </div>`;
+  document.body.append(lightbox);
+
+  const lightboxImage = lightbox.querySelector('img');
+  const lightboxCounter = lightbox.querySelector('.gallery-lightbox-counter');
+
+  const updateLightbox = () => {
+    const image = slides[currentIndex].querySelector('img');
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt;
+    lightboxCounter.textContent = `${currentIndex + 1} / ${slides.length}`;
+  };
+
+  const openLightbox = (index) => {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.showModal();
+    document.body.classList.add('lightbox-open');
+    lightbox.querySelector('.gallery-lightbox-close').focus();
+  };
+
+  const closeLightbox = () => lightbox.close();
 
   const showSlide = (nextIndex, announce = true) => {
     currentIndex = (nextIndex + slides.length) % slides.length;
@@ -100,11 +142,46 @@ if (gallery) {
 
     currentLabel.textContent = String(currentIndex + 1);
     if (announce) status.textContent = `Фотография ${currentIndex + 1} из ${slides.length}`;
+    if (lightbox.open) updateLightbox();
   };
 
   gallery.querySelector('[data-gallery-prev]').addEventListener('click', () => showSlide(currentIndex - 1));
   gallery.querySelector('[data-gallery-next]').addEventListener('click', () => showSlide(currentIndex + 1));
   dots.forEach((dot) => dot.addEventListener('click', () => showSlide(Number(dot.dataset.galleryDot))));
+  slides.forEach((slide, index) => {
+    const image = slide.querySelector('img');
+    image.tabIndex = 0;
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', `${image.alt}. Открыть фотографию целиком`);
+    image.addEventListener('click', () => openLightbox(index));
+    image.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openLightbox(index);
+      }
+    });
+  });
+
+  lightbox.querySelector('.gallery-lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.querySelector('.gallery-lightbox-prev').addEventListener('click', () => showSlide(currentIndex - 1));
+  lightbox.querySelector('.gallery-lightbox-next').addEventListener('click', () => showSlide(currentIndex + 1));
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  lightbox.addEventListener('close', () => {
+    document.body.classList.remove('lightbox-open');
+    lightboxImage.removeAttribute('src');
+    gallery.focus({ preventScroll: true });
+  });
+  lightbox.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      showSlide(currentIndex - 1);
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      showSlide(currentIndex + 1);
+    }
+  });
 
   gallery.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowLeft') {
