@@ -4,6 +4,8 @@ const dialog = document.querySelector('#booking-dialog');
 const bookingHouse = document.querySelector('#booking-house');
 const bookingExtras = document.querySelector('[data-booking-extras]');
 const toast = document.querySelector('.toast');
+const breakfastPhotoDialog = document.querySelector('#breakfast-photo-dialog');
+const breakfastPhotoTrigger = document.querySelector('[data-breakfast-photo-open]');
 
 function showToast(message) {
   toast.textContent = message;
@@ -65,6 +67,24 @@ dialog.addEventListener('click', (event) => {
   if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
 });
 dialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
+
+breakfastPhotoTrigger?.addEventListener('click', () => {
+  breakfastPhotoDialog.showModal();
+  document.body.classList.add('photo-dialog-open');
+  breakfastPhotoDialog.querySelector('.breakfast-photo-dialog-close').focus();
+});
+
+breakfastPhotoDialog?.querySelector('.breakfast-photo-dialog-close')?.addEventListener('click', () => breakfastPhotoDialog.close());
+breakfastPhotoDialog?.addEventListener('click', (event) => {
+  if (event.target === breakfastPhotoDialog) breakfastPhotoDialog.close();
+});
+breakfastPhotoDialog?.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    breakfastPhotoDialog.close();
+  }
+});
+breakfastPhotoDialog?.addEventListener('close', () => document.body.classList.remove('photo-dialog-open'));
 
 document.getElementById('booking-form').addEventListener('submit', (event) => {
   event.preventDefault();
