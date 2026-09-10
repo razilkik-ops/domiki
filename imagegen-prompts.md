@@ -86,3 +86,35 @@ Materials/textures: natural timber staves, aged deck boards, moss, pine bark
 Constraints: no people, no text, no logos, no watermark, no cars, no snow
 Avoid: fantasy architecture, overly orange HDR, pool, hot tub, modern city elements
 ```
+
+## `assets/apartments-warm/` и `assets/card-apartments-exterior-warm.jpg`
+
+Все 13 фотографий галереи апартаментов и широкая фотография карточки обработаны встроенным ImageGen как отдельные редактирования. В каждом вызове первая фотография была редактируемым исходником, а `assets/hero-cabins-winter.jpg` — только референсом света и цветовой гаммы.
+
+```text
+Use case: lighting-weather
+Asset type: website gallery/property-card photograph for the apartments
+Primary request: Edit Image 1 only through professional lighting and color grading so it visually belongs with Image 2. Match Image 2's airy warm ivory, cream and beige-white palette, soft diffused brightness, restrained saturation and gentle contrast. Do not copy the winter season, snow, frost, holiday decorations or any seasonal detail from Image 2.
+Input images: Image 1 is the sole edit target; Image 2 is a color and lighting reference only.
+Style/medium: photorealistic natural real-estate and architectural photography; realistic materials and true photographic texture.
+Composition/framing: preserve Image 1's exact camera position, perspective, crop, orientation, aspect ratio, geometry and spatial layout.
+Lighting/mood: clean soft natural daylight; warm neutral whites and light beige; balanced window highlights; softly lifted shadows while retaining believable depth.
+Constraints: preserve every existing object, fixture, furniture item, textile, artwork, wallpaper pattern, architectural feature, exterior detail and its exact position, count, shape and proportions. Change only light, exposure, white balance and overall color grade. No restyling, cleaning, staging, replacement, removal or addition.
+Avoid: snow, frost, winter, Christmas elements, new decor, new furniture, changed architecture, people, vehicles, text, logos, watermark, artificial CGI look.
+```
+
+## `assets/malta-warm/`, `assets/valencia-warm/` и обложки карточек
+
+Фотографии галерей «Мальты» и «Валенсии», а также горизонтальные обложки их карточек обработаны встроенным ImageGen как отдельные редактирования. В каждом вызове первая фотография была единственным редактируемым исходником, а `assets/hero-cabins-winter.jpg` использовался только как референс света и цветовой гаммы. Исходный зимний кадр `malta-12.jpg` оставлен без повторной генерации и скопирован в новый каталог без изменений.
+
+```text
+Use case: lighting-weather
+Asset type: website gallery/property-card photograph for the Malta or Valencia guest house
+Primary request: Edit Image 1 only through professional lighting and color grading so it visually belongs with Image 2. Match Image 2's airy warm ivory, cream and beige-white palette, soft diffused brightness, restrained saturation and gentle contrast. Do not copy the winter season, snow, frost, decorations, architecture or outdoor scene from Image 2.
+Input images: Image 1 is the sole edit target; Image 2 is a color and lighting reference only.
+Style/medium: photorealistic natural hospitality and real-estate photography; realistic materials and true photographic texture.
+Composition/framing: preserve Image 1's exact camera position, perspective, crop, orientation, aspect ratio, geometry and spatial layout.
+Lighting/mood: clean soft natural daylight; warm neutral whites and light beige; balanced highlights; softly lifted shadows while retaining believable depth.
+Constraints: preserve every existing object, fixture, furniture item, textile, artwork, plant, appliance, cable, sign, architectural and exterior feature and its exact position, count, shape and proportions. Change only light, exposure, white balance and overall color grade. No restyling, cleaning, staging, replacement, removal or addition.
+Avoid: snow, frost, winter, Christmas elements, new decor, new furniture, changed architecture, people, text, logos, watermark, artificial CGI look.
+```

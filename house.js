@@ -1,3 +1,5 @@
+import { showBookingError, submitBookingForm } from './booking-api.js';
+
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 const dialog = document.querySelector('.house-booking-dialog');
@@ -47,13 +49,18 @@ dialog?.addEventListener('click', (event) => {
 });
 dialog?.addEventListener('close', () => document.body.classList.remove('dialog-open'));
 
-form?.addEventListener('submit', (event) => {
+form?.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const extras = new FormData(form).getAll('extras');
-  form.hidden = true;
-  const success = dialog.querySelector('.dialog-success');
-  renderSuccess(success, `Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы с вами свяжемся.`);
-  success.hidden = false;
+
+  try {
+    await submitBookingForm(form);
+    form.hidden = true;
+    const success = dialog.querySelector('.dialog-success');
+    renderSuccess(success, 'Заявка отправлена. Скоро мы с вами свяжемся.');
+    success.hidden = false;
+  } catch (error) {
+    showBookingError(form, error);
+  }
 });
 
 if (inquiryForm) {
@@ -73,14 +80,19 @@ if (inquiryForm) {
     });
   }
 
-  inquiryForm.addEventListener('submit', (event) => {
+  inquiryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const extras = new FormData(inquiryForm).getAll('extras');
-    const success = inquiryCard.querySelector('.house-inquiry-success');
-    success.querySelector('span').textContent = `Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы с вами свяжемся.`;
-    inquiryForm.hidden = true;
-    success.hidden = false;
-    success.focus?.();
+
+    try {
+      await submitBookingForm(inquiryForm);
+      const success = inquiryCard.querySelector('.house-inquiry-success');
+      success.querySelector('span').textContent = 'Заявка отправлена. Скоро мы с вами свяжемся.';
+      inquiryForm.hidden = true;
+      success.hidden = false;
+      success.focus?.();
+    } catch (error) {
+      showBookingError(inquiryForm, error);
+    }
   });
 
   inquiryForm.querySelector('[data-js-submit]').disabled = false;

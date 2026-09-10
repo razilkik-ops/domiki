@@ -132,6 +132,8 @@
         <aside class="house-inquiry-card" id="booking" aria-labelledby="booking-title">
           <p class="eyebrow">Заявка на бронирование</p><h2 id="booking-title">Забронировать баню</h2><p class="house-inquiry-lead">Оставьте контакты — собственник поможет выбрать свободное время.</p>
           <form class="house-inquiry-form">
+            <input name="property" type="hidden" value="Баня на дровах" />
+            <div class="booking-honeypot" aria-hidden="true"><label>Не заполняйте это поле<input name="website" type="text" tabindex="-1" autocomplete="off" /></label></div>
             <label>Ваше имя<input name="name" type="text" autocomplete="name" placeholder="Анна" required /></label>
             <label>Ваш email<input name="email" type="email" autocomplete="email" placeholder="anna@example.com" required /></label>
             <label>Ваш телефон<input name="phone" type="tel" autocomplete="tel" placeholder="+375 29 000-00-00" required /></label>

@@ -592,3 +592,21 @@ cite { color: var(--muted); font-size: 11px; font-style: normal; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+.booking-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.booking-form-error {
+  margin: 0;
+  color: #a73722;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+form[aria-busy="true"] {
+  cursor: progress;
+}

@@ -1,3 +1,5 @@
+import { showBookingError, submitBookingForm } from './booking-api.js';
+
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 const dialog = document.querySelector('#booking-dialog');
@@ -86,13 +88,19 @@ breakfastPhotoDialog?.addEventListener('keydown', (event) => {
 });
 breakfastPhotoDialog?.addEventListener('close', () => document.body.classList.remove('photo-dialog-open'));
 
-document.getElementById('booking-form').addEventListener('submit', (event) => {
+document.getElementById('booking-form').addEventListener('submit', async (event) => {
   event.preventDefault();
-  const extras = new FormData(event.currentTarget).getAll('extras');
-  event.currentTarget.hidden = true;
-  const success = dialog.querySelector('.dialog-success');
-  renderSuccess(success, `Заявка отправлена.${extras.length ? ` Дополнительно: ${extras.join(', ')}.` : ''} Скоро мы с вами свяжемся.`);
-  success.hidden = false;
+  const form = event.currentTarget;
+
+  try {
+    await submitBookingForm(form);
+    form.hidden = true;
+    const success = dialog.querySelector('.dialog-success');
+    renderSuccess(success, 'Заявка отправлена. Скоро мы с вами свяжемся.');
+    success.hidden = false;
+  } catch (error) {
+    showBookingError(form, error);
+  }
 });
 
 document.querySelector('#booking-form [data-js-submit]').disabled = false;
