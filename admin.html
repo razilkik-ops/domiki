@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'" />
+    <title>Управление сайтом — MALTA RETREAT</title>
+    <link rel="stylesheet" href="/admin.css" />
+  </head>
+  <body>
+    <header class="admin-header">
+      <a class="admin-brand" href="./index.html" aria-label="На главную MALTA RETREAT">
+        <span class="admin-brand-mark">⌂</span>
+        <span><strong>MALTA RETREAT</strong><small>Управление сайтом</small></span>
+      </a>
+      <a class="admin-site-link" href="./index.html" target="_blank" rel="noreferrer">Открыть сайт ↗</a>
+    </header>
+
+    <main class="admin-main">
+      <section class="admin-login" data-login-panel hidden>
+        <p class="admin-eyebrow">Закрытый раздел</p>
+        <h1>Вход в админку</h1>
+        <p>Введите пароль, указанный в переменной <code>ADMIN_PASSWORD</code> файла <code>.env</code>.</p>
+        <form data-login-form>
+          <label>Пароль<input name="password" type="password" autocomplete="current-password" maxlength="256" required autofocus /></label>
+          <button type="submit">Войти</button>
+        </form>
+        <p class="admin-message" data-login-message role="alert" hidden></p>
+      </section>
+
+      <section class="admin-editor" data-editor-panel hidden>
+        <div class="admin-title-row">
+          <div>
+            <p class="admin-eyebrow">Цены и описания</p>
+            <h1>Варианты отдыха</h1>
+            <p>После сохранения новые данные появятся на главной и внутренних страницах.</p>
+          </div>
+          <button class="admin-logout" type="button" data-logout>Выйти</button>
+        </div>
+
+        <form data-content-form>
+          <div class="admin-properties" data-properties></div>
+          <div class="admin-actions">
+            <p class="admin-message" data-save-message role="status" aria-live="polite" hidden></p>
+            <button class="admin-save" type="submit">Сохранить изменения</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="admin-loading" data-loading-panel>
+        <span class="admin-spinner" aria-hidden="true"></span>
+        <p>Загружаем данные…</p>
+      </section>
+    </main>
+
+    <template id="property-editor-template">
+      <article class="admin-property">
+        <div class="admin-property-heading"><span class="admin-property-number"></span><h2></h2></div>
+        <div class="admin-price-row">
+          <label>Цена Пн–Чт, BYN<input name="weekday" type="number" min="0" max="100000" step="1" inputmode="numeric" required /></label>
+          <label data-weekend-label>Цена Пт–Вс, BYN<input name="weekend" type="number" min="0" max="100000" step="1" inputmode="numeric" required /></label>
+        </div>
+        <label>Описание в карточке на главной<textarea name="cardDescription" rows="3" maxlength="600" required></textarea><small><span data-card-count>0</span>/600</small></label>
+        <label>Полное описание на странице<textarea name="pageDescription" rows="8" maxlength="3000" required></textarea><small>Разделяйте абзацы пустой строкой · <span data-page-count>0</span>/3000</small></label>
+      </article>
+    </template>
+
+    <script type="module" src="/admin.js"></script>
+  </body>
+</html>

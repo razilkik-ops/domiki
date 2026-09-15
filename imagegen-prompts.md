@@ -118,3 +118,17 @@ Lighting/mood: clean soft natural daylight; warm neutral whites and light beige;
 Constraints: preserve every existing object, fixture, furniture item, textile, artwork, plant, appliance, cable, sign, architectural and exterior feature and its exact position, count, shape and proportions. Change only light, exposure, white balance and overall color grade. No restyling, cleaning, staging, replacement, removal or addition.
 Avoid: snow, frost, winter, Christmas elements, new decor, new furniture, changed architecture, people, text, logos, watermark, artificial CGI look.
 ```
+
+## `assets/card-bath-horizontal-warm.jpg`
+
+Горизонтальная обложка карточки бани создана встроенным ImageGen в режиме редактирования. `assets/barrel-sauna.png` использовался как редактируемый исходник, а `assets/hero-cabins-winter.jpg` — только как референс светлой цветовой гаммы.
+
+```text
+Use case: lighting-weather
+Asset type: horizontal website property-card photograph for the bath/sauna card, final display ratio 2:1 (1774×887)
+Primary request: preserve the same wooden barrel sauna, deck, pine forest, two chairs and string lights; reframe for a clean 2:1 crop and apply an airy warm ivory, cream and beige-white palette without copying the winter season.
+Composition/framing: sauna fully visible in the left-center; deck and chairs remain readable; no important part cropped.
+Lighting/mood: soft warm-neutral early-evening light, lifted shadows, gentle cream highlights and a subtle believable interior glow.
+Constraints: preserve the sauna architecture and existing object count; do not add, remove, replace or redesign objects.
+Avoid: people, snow, frost, Christmas decor, new structures, extra furniture, text, logos, watermark, oversaturated orange, CGI look.
+```

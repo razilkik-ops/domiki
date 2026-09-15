@@ -5,6 +5,10 @@ dist/
 .env
 .env.*
 !.env.example
+public/data/site-content.local.json
+public/data/site-content.local.json.lock
+public/data/site-content-*
+public/data/admin-login-state.json
 
 # Local design comparison and QA artifacts
 comparison-*.jpg

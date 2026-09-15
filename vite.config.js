@@ -11,6 +11,7 @@ export default defineConfig({
         valencia: resolve(process.cwd(), 'valencia.html'),
         bath: resolve(process.cwd(), 'bath.html'),
         apartments: resolve(process.cwd(), 'apartments.html'),
+        admin: resolve(process.cwd(), 'admin.html'),
         privacy: resolve(process.cwd(), 'privacy.html'),
         cookies: resolve(process.cwd(), 'cookies.html'),
       },
